@@ -8,8 +8,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh '''docker-compose run clean
-docker-compose run test'''
+        sh 'docker-compose run test'
       }
     }
     stage('report') {
@@ -45,6 +44,11 @@ make deploy-production-ssh'''
             archiveArtifacts 'target/spring-boot-sample-data-rest-0.1.0.jar'
           }
         }
+      }
+    }
+    stage('clean') {
+      steps {
+        sh 'docker-compose run clean'
       }
     }
   }
