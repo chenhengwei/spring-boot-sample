@@ -35,6 +35,7 @@ pipeline {
         stage('deploy') {
           steps {
             sh '''make build-docker-prod-image
+
 make deploy-production-ssh'''
           }
         }
