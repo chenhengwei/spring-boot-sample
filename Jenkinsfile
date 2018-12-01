@@ -11,18 +11,9 @@ pipeline {
         sh 'docker-compose run test'
       }
     }
-    stage('report') {
-      parallel {
-        stage('report') {
-          steps {
-            cobertura(coberturaReportFile: 'target/site/cobertura/coverage.xml')
-          }
-        }
-        stage('junitreport') {
-          steps {
-            junit 'target/surefire-reports/*.xml'
-          }
-        }
+    stage('junitreport') {
+      steps {
+        junit 'target/surefire-reports/*.xml'
       }
     }
     stage('package') {
