@@ -8,7 +8,8 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'docker-compose run test'
+        sh '''docker-compose run clean
+docker-compose run test'''
       }
     }
     stage('report') {
